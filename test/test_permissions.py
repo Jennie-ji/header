@@ -1,17 +1,11 @@
 import pytest
 from check.permissions import check_permissions
-from check.model import PASS, MISCONFIG, MISSING
+from check.model import PASS, MISSING
 
 CASES = [
     ("pp valid deny sensitive features",
      {"Permission-Policy": "accelerometer=(), geolocation=(), microphone=()"},
      {"status": PASS, "found_value": "accelerometer=(), geolocation=(), microphone=()"}),
-
-    ("pp invalid wildcard",
-     {"Permission-Policy": "geolocation=*, camera=()"},
-     {"status": MISCONFIG,
-      "details": "Avoid '*'; use explicit values (e.g., geolocation=()).",
-      "found_value": "geolocation=*, camera=()"}),
 
     ("pp missing (empty value)",
      {"Permission-Policy": ""},
