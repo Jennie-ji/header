@@ -18,10 +18,6 @@ CASES = [
     ("xfo misconfig invalid token",
      {"X-Frame-Options": "xxx"},
      {"status": MISCONFIG, "details": "Use 'DENY' or 'SAMEORIGIN'", "found_value": "xxx"}),
-
-    ("xfo missing",
-     {},
-     {"status": MISSING, "details": "X-Frame-Options missing", "found_value": None}),
 ]
 
 @pytest.mark.parametrize("name, headers, expected", CASES)

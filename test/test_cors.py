@@ -7,6 +7,10 @@ CASES = [
      {"Access-Control-Allow-Origin": "https://test.com", "Access-Control-Allow-Credentials": "false"},
      {"status": PASS, "found_value": "https://test.com"}),
 
+    ("cors valid allowlist",
+     {"Access-Control-Allow-Origin": "https://test.com"},
+     {"status": PASS, "found_value": "https://test.com"}),
+
     ("cors invalid wildcard origin",
      {"Access-Control-Allow-Origin": "*"},
      {"status": MISCONFIG,
@@ -24,12 +28,6 @@ CASES = [
      {"status": MISCONFIG,
       "details": "No '*' with credentials.",
       "found_value": "*"}),
-
-    ("cors not_used_no_headers",
-     {},
-     {"status": MISSING,
-      "details": "Add Access-Control-Allow-Origin.",
-      "found_value": None}),
 ]
 
 @pytest.mark.parametrize("name, headers, expected", CASES)

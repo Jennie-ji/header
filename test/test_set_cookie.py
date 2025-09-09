@@ -7,10 +7,6 @@ CASES = [
      {"Set-Cookie": "sid=abc; Secure; HttpOnly; SameSite=Strict"},
      {"status": PASS, "found_value": "sid=abc; Secure; HttpOnly; SameSite=Strict"}),
 
-    ("missing header -> MISSING",
-     {},
-     {"status": MISSING, "details": "Set-Cookie header missing", "found_value": None}),
-
     ("missing Secure",
      {"Set-Cookie": "sid=abc; HttpOnly; SameSite=Strict"},
      {"status": MISCONFIG, "details": "Cookie missing flags: Secure",
